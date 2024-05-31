@@ -96,9 +96,9 @@ def generateSitemap(data):
         lastmod = SubElement(url, "lastmod")
         lastmod.text = entry.get("date")
         changefreq = SubElement(url, "changefreq")
-        changefreq.text = "weekly"
+        changefreq.text = entry.get("changefreq")
         priority = SubElement(url, "priority")
-        priority.text = "0.6"
+        priority.text = entry.get("priority")
         xhtml1 = SubElement(url, "{http://www.w3.org/1999/xhtml}link")
         xhtml1.set("href",  link_ja)
         xhtml1.set("hreflang", "ja")
