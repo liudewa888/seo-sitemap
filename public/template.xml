@@ -1,14 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-       http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
->
+    xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-   <loc>https://news.ifai.io/</loc>
+   <loc>https://news.ifai.io</loc>
+   <lastmod>2021-05-01</lastmod>
+   <changefreq>always</changefreq>
    <priority>1.0</priority>
-   <changefreq>daily</changefreq>
+   <xhtml:link rel="alternate" hreflang="ja" href="https://news.ifai.io/ja"/>
+   <xhtml:link rel="alternate" hreflang="zh" href="https://news.ifai.io/zh"/>
+   <xhtml:link rel="alternate" hreflang="en" href="https://news.ifai.io"/>
   </url>
-<custom_content>Your custom content here</custom_content>
+  <url>
+   <loc>https://news.ifai.io/zh</loc>
+   <lastmod>2021-05-01</lastmod>
+   <changefreq>always</changefreq>
+   <priority>1.0</priority>
+   <xhtml:link rel="alternate" hreflang="ja" href="https://news.ifai.io/ja"/>
+   <xhtml:link rel="alternate" hreflang="zh" href="https://news.ifai.io/zh"/>
+   <xhtml:link rel="alternate" hreflang="en" href="https://news.ifai.io"/>
+  </url>
+  <url>
+   <loc>https://news.ifai.io/ja</loc>
+   <lastmod>2021-05-01</lastmod>
+   <changefreq>always</changefreq>
+   <priority>1.0</priority>
+   <xhtml:link rel="alternate" hreflang="ja" href="https://news.ifai.io/ja"/>
+   <xhtml:link rel="alternate" hreflang="zh" href="https://news.ifai.io/zh"/>
+   <xhtml:link rel="alternate" hreflang="en" href="https://news.ifai.io"/>
+  </url>
 </urlset>
