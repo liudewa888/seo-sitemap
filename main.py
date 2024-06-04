@@ -17,7 +17,7 @@ headers={
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36 Edg/113.0.1774.57'
 }
 # 写入日志
-logging.basicConfig(filename='sitemap.log',format='\n%(asctime)s - %(levelname)s - %(message)s', encoding='utf-8',level=logging.INFO)
+logging.basicConfig(filename='sitemap.log',format='\n%(asctime)s - %(levelname)s - %(message)s',level=logging.INFO)
 def Wlog(text):
  logging.error(text,exc_info=True)
 
@@ -27,6 +27,7 @@ def generateJSON():
     res = requests.get(url).json()
     if 'data' not in res:
       Wlog('500------codes接口出现错误,更新失败,请重新执行')
+      print('500------codes接口出现错误,更新失败,请重新执行')
       sys.exit(0)
     data = res.get('data', [])
     result = []
@@ -149,6 +150,7 @@ def generateSiteMapFile(xml_str):
     with open(modified_xml_file, 'w') as file:
         file.write(new_xml_str)
     logging.info('200------更新成功')
+    print('200------更新成功')
 def main():
  res_json = generateJSON()
  generateSitemap(res_json)
