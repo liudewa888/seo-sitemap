@@ -1,19 +1,19 @@
 {
   "data": [
     {
-      "insertTime": "2024-05-01",
+      "insertTime": "2024-06-01",
       "code": "",
       "changefreq": "always",
       "priority": "1.0"
     },
     {
-      "insertTime": "2024-05-01",
+      "insertTime": "2024-06-01",
       "code": "/zh",
       "changefreq": "always",
       "priority": "0.9"
     },
     {
-      "insertTime": "2024-05-01",
+      "insertTime": "2024-06-01",
       "code": "/ja",
       "changefreq": "always",
       "priority": "0,9"

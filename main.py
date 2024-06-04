@@ -1,5 +1,7 @@
 import json
-from xml.etree.ElementTree import Element, SubElement, tostring, parse,fromstring,ElementTree
+import logging
+import sys
+from xml.etree.ElementTree import Element, SubElement, tostring,ElementTree
 from xml.dom import minidom
 import requests
 namespaces = {
@@ -14,12 +16,19 @@ headers={
     'Accept': '*/*',
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36 Edg/113.0.1774.57'
 }
+# 写入日志
+logging.basicConfig(filename='sitemap.log',format='\n%(asctime)s - %(levelname)s - %(message)s', encoding='utf-8',level=logging.INFO)
+def Wlog(text):
+ logging.error(text,exc_info=True)
+
 def generateJSON():
-    # global headers
-    # url = 'https://api.ifai.io/protal/codes'
-    # res = requests.get(url,headers=headers).json()
-    # if 'data' not in res:
-    #   return
+    global headers
+    url = 'https://api.ifai.io/protal/codes' # 接口地址
+    res = requests.get(url).json()
+    if 'data' not in res:
+      Wlog('500------codes接口出现错误,更新失败,请重新执行')
+      sys.exit(0)
+    data = res.get('data', [])
     result = []
     result1 =[]
     result2 = []
@@ -28,7 +37,7 @@ def generateJSON():
      res = json.load(file)
     for item in res.get('data', []):
         code_value = item.get('code')
-        date = item.get('insertTime')
+        date =  data[0]['insertTime'] or item.get('insertTime')
         changefreq = item.get('changefreq')
         priority = item.get('priority')
         if date:
@@ -40,12 +49,11 @@ def generateJSON():
                }
             result1.append(obj)
 
-    json_file_path = json_dir_path + 'codes.json'
-    with open(json_file_path, 'r', encoding='utf-8') as file:
-    # 读取整个文件，并将内容转换为Python的字典对象
-     res = json.load(file)
-    # 解析原始数据，并构造所需的格式
-    for item in res.get('data', []):
+    # json_file_path = json_dir_path + 'codes.json'
+    # with open(json_file_path, 'r', encoding='utf-8') as file:
+    # # 读取整个文件，并将内容转换为Python的字典对象
+    #  res = json.load(file)
+    for item in data:
         code_value = item.get('code')
         date = item.get('insertTime')
         if code_value:
@@ -64,16 +72,6 @@ def generateJSON():
     return result
 
 def generateSitemap(data):
-    # template_file_path = json_dir_path +'template.xml'
-    # with open(template_file_path, 'r') as file:
-    #     content = file.read()
-    # tree = fromstring(content)
-    # for elem in tree.iter():
-    #     if elem.tag.endswith('urlset'):
-    #         urlset = elem
-    # urlset = root.find('url')
-    # print(urlset,900)
-
     # 创建根元素
     urlset = Element("urlset",{
     'xmlns': 'http://www.sitemaps.org/schemas/sitemap/0.9',
@@ -143,29 +141,20 @@ def generateSitemap(data):
 
     # 生成格式化的XML字符串
     xml_str = tostring(urlset, encoding="unicode", method="xml")
-    # xml_str = minidom.parseString(tostring(urlset)).toprettyxml(indent="  ")
-    # xml_str = xml_str.replace('<?xml version="1.0" ?>\n', '')
-    # xml_str = xml_str.replace('<urlset>\n', '')
-    # xml_str = xml_str.replace('\n</urlset>\n', '')
-    # 遍历XML树，只处理<url>元素 
-    # 生成xml文件
-    # print(xml_str)
     generateSiteMapFile(xml_str)
 
 def generateSiteMapFile(xml_str):
-    # template_file_path = json_dir_path +'template.xml'
-    # 输出修改后的XML到新的文件
     modified_xml_file =  json_dir_path + 'ainews_sitemap.xml'
-    # with open(template_file_path, 'r') as file:
-    #     content = file.read()
-    # new_xml_str = content.replace('<custom_content>Your custom content here</custom_content>', xml_str)
     new_xml_str = minidom.parseString(xml_str).toprettyxml(indent="  ", newl="\n")
     with open(modified_xml_file, 'w') as file:
         file.write(new_xml_str)
-
+    logging.info('200------更新成功')
 def main():
  res_json = generateJSON()
  generateSitemap(res_json)
 
 if __name__ == '__main__':
-    main()
+    try:
+        main()
+    except Exception as e:
+        Wlog('')

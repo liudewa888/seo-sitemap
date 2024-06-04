@@ -1,1 +1,2 @@
 Sitemap: https://news.ifai.io/ainews_sitemap.xml
+Disallow: /api/

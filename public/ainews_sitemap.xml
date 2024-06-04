@@ -28,15 +28,6 @@
     <html:link href="https://news.ifai.io" hreflang="en" rel="alternate"/>
   </url>
   <url>
-    <loc>https://news.ifai.io/markdowntest-MDAwMDE2MDQ=</loc>
-    <lastmod>2024-05-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-    <html:link href="https://news.ifai.io/ja/markdowntest-MDAwMDE2MDQ=" hreflang="ja" rel="alternate"/>
-    <html:link href="https://news.ifai.io/zh/markdowntest-MDAwMDE2MDQ=" hreflang="zh" rel="alternate"/>
-    <html:link href="https://news.ifai.io/markdowntest-MDAwMDE2MDQ=" hreflang="en" rel="alternate"/>
-  </url>
-  <url>
     <loc>https://news.ifai.io/MysteriousGPT-4-Level-AI-Chatbot-Disappears-Sparking-Speculation-andIntrigue-MDAwMDEzMTk=</loc>
     <lastmod>2024-05-01</lastmod>
     <changefreq>weekly</changefreq>
@@ -14447,7 +14438,7 @@
   </url>
   <url>
     <loc>https://news.ifai.io/JapanDeploys-AI-Powered-Bear-Detection-System-to-Combat-Surge-inAttacks-MDAwMDEzMjE=</loc>
-    <lastmod>2024-05-27</lastmod>
+    <lastmod>2024-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <html:link href="https://news.ifai.io/ja/JapanDeploys-AI-Powered-Bear-Detection-System-to-Combat-Surge-inAttacks-MDAwMDEzMjE=" hreflang="ja" rel="alternate"/>
