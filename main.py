@@ -23,7 +23,8 @@ def Wlog(text):
 
 def generateJSON():
     global headers
-    url = 'https://api.ifai.io/protal/codes' # 接口地址
+    # url = 'http://platform:7000/protal/codes' # 生产 接口地址
+    url = 'https://api.ifai.io/protal/codes' # 开发 接口地址
     res = requests.get(url).json()
     if 'data' not in res:
       Wlog('500------codes接口出现错误,更新失败,请重新执行')
