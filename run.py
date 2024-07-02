@@ -5,7 +5,7 @@ import requests
 def encrypt_with_md5(string_to_encrypt):
     # 获取今天的日期（不包含年份和月份）
     today_date = datetime.datetime.now().strftime("%d")
-    
+    today_date = today_date.lstrip('0')
     # 将字符串连接起来
     combined_string = string_to_encrypt + today_date
     
